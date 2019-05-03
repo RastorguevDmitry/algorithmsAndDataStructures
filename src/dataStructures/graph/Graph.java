@@ -1,7 +1,7 @@
 package dataStructures.graph;
 
-import three.queue.Queue;
-import three.stack.Stack;
+import dataStructures.queue.Queue;
+import dataStructures.stack.Stack;
 
 public class Graph {
     Vertex[] vertexList;
@@ -39,7 +39,7 @@ public class Graph {
         displayVertex(0);
         stack.push(0);
         while (!stack.isEmpty()) {
-            int v = getUnvisitedVertex(stack.peek());
+            int v = getUnvisitedVertex((int)stack.peek());
             if (v == -1)
                 stack.pop();
             else {

@@ -1,13 +1,13 @@
 package dataStructures.stack;
 
-public class Stack {
-    private char[] stack;
+public class Stack<T> {
+    private Object[] stack;
     private int top;
     private int maxsize;
 
     public Stack(int size) {
         this.maxsize = size;
-        this.stack = new char[maxsize];
+        this.stack = new Object[maxsize];
         this.top = -1;
     }
 
@@ -19,15 +19,16 @@ public class Stack {
         return (top == maxsize - 1);
     }
 
-    public void push(char i) {
+    public void push(T i) {
         stack[++top] = i;
     }
 
-    public char pop() {
+    public Object pop() {
         return stack[top--];
     }
 
-    public char peek() {
+    public Object peek() {
         return stack[top];
     }
 }
+

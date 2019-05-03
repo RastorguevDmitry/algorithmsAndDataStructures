@@ -1,4 +1,4 @@
-package dataStructures.three;
+package dataStructures.tree.treeForPerson;
 
 public class Person {
     public String name;

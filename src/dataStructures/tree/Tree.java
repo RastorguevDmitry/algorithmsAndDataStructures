@@ -1,12 +1,12 @@
-package dataStructures.three;
+package dataStructures.tree;
 
-public class Three {
+public class Tree {
     public Node root;
 
     public Node find(int key) {
         Node current = root;
-        while (current.person.id != key) {
-            if (key < current.person.id) {
+        while (current.num != key) {
+            if (key < current.num) {
                 current = current.leftChild;
             } else {
                 current = current.rightChild;
@@ -16,16 +16,16 @@ public class Three {
         return current;
     }
 
-    public void insert(Person p) {
+    public void insert(int n) {
         Node node = new Node();
-        node.person = p;
+        node.num = n;
         if (root == null) root = node;
         else {
             Node current = root;
             Node parent;
             while (true) {
                 parent = current;
-                if (p.id < current.person.id) {
+                if (n < current.num) {
                     current = current.leftChild;
                     if (current == null) {
                         parent.leftChild = node;
@@ -74,9 +74,9 @@ public class Three {
         Node current = root;
         Node parent = root;
         boolean isLeftChild = true;
-        while (current.person.id != key) {
+        while (current.num != key) {
             parent = current;
-            if (key < current.person.id) {
+            if (key < current.num) {
                 isLeftChild = true;
                 current = current.leftChild;
             } else {
@@ -91,7 +91,7 @@ public class Three {
             else if (isLeftChild) parent.leftChild = null;
             else parent.rightChild = null;
         }
-        //нету правого потомка
+        //нет правого потомка
         else if (current.rightChild == null) {
             if (current == root) root = current.leftChild;
             else if (isLeftChild) parent.leftChild = current.leftChild;
@@ -109,7 +109,7 @@ public class Three {
             if (current == root) root = successor;
             else if (isLeftChild) parent.leftChild = successor;
             else parent.rightChild = successor;
-            successor.rightChild = current.leftChild;
+            successor.leftChild = current.leftChild;
         }
         return true;
     }
@@ -128,5 +128,14 @@ public class Three {
             successor.leftChild = node.rightChild;
         }
         return successor;
+    }
+
+    public int heightOfBinaryTree(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            return 1 + Math.max(heightOfBinaryTree(node.leftChild),
+                    heightOfBinaryTree(node.rightChild));
+        }
     }
 }
